@@ -1,2 +1,2 @@
 # Walkerbot
-code for simulating walking motion
+Code for simulating walking motion with the uArm Swift Pro.
