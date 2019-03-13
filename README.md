@@ -9,3 +9,5 @@ GCC Senior Project. Codename: "Salsa Tequila"
 - Brister Jones
 
 Designed for use with GI PASS systems.
+
+making use of [uArm-Python-SDK](https://github.com/uArm-Developer/uArm-Python-SDK)
