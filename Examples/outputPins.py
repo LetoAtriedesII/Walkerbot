@@ -30,7 +30,8 @@ swift.flush_cmd(wait_stop=True)
 '''
 
 #set_digital_output(pin=None, value=None, wait=True, timeout=None, callback=None)
-swift.set_digital_output(pin=50, value=1)
+swift.set_digital_output(pin=50, value=1) # red led
+swift.set_digital_output(pin=49, value=0) # green led
 swift.flush_cmd()
 
 i=0
@@ -48,7 +49,8 @@ while i < 5:
     swift.flush_cmd()
     
     i = i+1
-swift.set_digital_output(pin=50, value=0)
-swift.flush_cmd()
+swift.set_digital_output(pin=50, value=0) #red led
+swift.set_digital_output(pin=49, value=1) #green led
+swift.flush_cmd() # (will want a ~1 second delay at end of code before)
 
 swift.disconnect()
