@@ -14,15 +14,24 @@ speed (mm/s?)       :   0 -> 250
 '''
 
 import csv
-xPos = []
+#vectors of points in space
+xPos = [] 
 yPos = []
 zPos = []
+#vectors of differences in points in space
 xDist = []
 yDist = []
 zDist = []
 xSpeed = []
 ySpeed = []
 zSpeed = []
+
+#robot constraint variables
+rotationX = 90
+heightY = 30
+stretchZ = 150
+speed = 100
+
 file = open('parseout.txt','w') 
 
 with open('bnj_walk.csv') as csvDataFile:
@@ -39,7 +48,37 @@ for i in range(0, len(xPos)-1):
     xDist.append(xPos[i] - xPos[i+1])
     yDist.append(yPos[i] - yPos[i+1])
     zDist.append(zPos[i] - zPos[i+1])
-    file.write('swift.set_polar(stretch=' + str(xDist[i]) + ', rotation=' + str(zDist[i]) + ', height=' + str(zDist[i]) + ', speed=' + str(xSpeed[i]) + ', wait=True)\n')
+    
+    #rotation (degrees)  :   0 -> 180 
+    rotationX = rotationX + zDist[i] 
+    if rotationX > 180:
+        rotationX = 180
+    elif rotationX < 0:
+        rotationX = 0
+
+    #height (mm)         :  30 -> 150 
+    heightY = heightY + yDist[i]
+    if heightY > 150:
+        heightY = 150
+    elif heightY < 30:
+        heightY = 30
+
+    #stretch (mm)        : 150 -> 300
+    stretchZ = stretchZ + zDist[i]
+    if stretchZ > 300:
+        stretchZ = 300
+    elif stretchZ < 150:
+        stretchZ = 150
+
+    #speed (mm/s?)       :   0 -> 250
+    if speed > 250:
+        speed = 150
+    elif speed < 0:
+        speed = 0
+
+
+    
+    file.write('swift.set_polar(stretch=' + str(stretchZ) + ', rotation=' + str(rotationX) + ', height=' + str(heightY) + ', speed=' + str(speed)+ ')\n')
 
 
 file.close()
