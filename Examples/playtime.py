@@ -52,26 +52,24 @@ swift.set_polar(stretch=300, rotation=90, height=30, speed=100000, wait=True)
 print(swift.set_polar(stretch=300, rotation=90, height=30, wait=True))
 '''
 
+swift.reset(wait=True, speed=250)
+speed = 100
 
+swift.set_position(x=130, y=180, z=30, speed=speed, wait=True)
+print('Position 1 reached')
+swift.set_position(x=200, y=-180, z=30, speed=speed, wait=True)
+print('Position 2 reached')
+swift.set_position(x=250, y=0, z=150, speed=speed, wait=True)
+print('Position 3 reached')
+swift.set_position(x=150, y=100, z=30, speed=speed, wait=True)
+print('Position 4 reached')
 
-swift.set_polar(stretch=150, rotation=0, height=100, speed=250)
-print(swift.set_polar(stretch=150, rotation=0, height=100, wait=True))
-
-swift.set_polar(stretch = 200, rotation=90, height= 50)
-print(swift.set_polar(stretch = 200, rotation=90, height= 50, wait=True))
-
-swift.set_polar(stretch= 300, rotation=180, height=150)
-print(swift.set_polar(stretch= 300, rotation=180, height=150, wait=True))
-
-swift.set_polar(stretch=180, rotation=90, height=100)
-print(swift.set_polar(stretch=180, rotation=90, height=100, wait=True))
-swift.flush_cmd()
 '''
-swift.set_polar(stretch=150, rotation=180, height=100, speed=250, wait=True)
-print(swift.set_polar(stretch=150, rotation=180, height=100, wait=True))
-swift.flush_cmd()
-swift.set_polar(rotation=0, wait=True)
-print(swift.set_polar(rotation=0, wait=True))
-swift.flush_cmd()
+swift.set_polar(stretch=150, rotation=0, height=150, speed=speed, wait=True)
+swift.set_polar(stretch=300, rotation=180, height=30, speed=speed, wait=True)
 '''
+
+swift.reset(wait=True, speed=50)
+swift.flush_cmd()
+time.sleep(5)
 swift.disconnect()
