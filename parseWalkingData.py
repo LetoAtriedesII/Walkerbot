@@ -78,7 +78,7 @@ for i in range(0, len(xPos)-1):
 
 
     
-    file.write('swift.set_polar(stretch=' + str(stretchZ) + ', rotation=' + str(rotationX) + ', height=' + str(heightY) + ', speed=' + str(speed)+ ')\n')
+    file.write('swift.set_position(x=' + str(stretchZ) + ', y=' + str(rotationX) + ', z=' + str(heightY) + ', speed=' + str(speed)+ ', wait=true)\n')
 
 
 file.close()
