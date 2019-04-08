@@ -7,10 +7,16 @@
 # Author: Vinman <vinman.wen@ufactory.cc> <vinman.cub@gmail.com>
 
 '''
-stretch (mm)        : 150 -> 300
-rotation (degrees)  :   0 -> 180 
-height (mm)         :  30 -> 150 
-speed (mm/s?)       :   0 -> 250
++x is away from base
++y is towards power cable side of base
++z is upwards
+speed is [0, 100] if version is 4.0+
+speed is [0, 100000] if 3.0 < version < 4.0
+
+x (mm)          :  150 -> 300
+y (mm)          : -150 -> 150 
+z (mm)          :   30 -> 150 
+speed (mm/s?)   :    0 -> 100
 '''
 
 
@@ -52,12 +58,12 @@ swift.set_polar(stretch=300, rotation=90, height=30, speed=100000, wait=True)
 print(swift.set_polar(stretch=300, rotation=90, height=30, wait=True))
 '''
 
-swift.reset(wait=True, speed=250)
-speed = 100
+swift.reset(wait=True, speed=5000)
+speed = 5000
 
-swift.set_position(x=130, y=180, z=30, speed=speed, wait=True)
+swift.set_position(x=150, y=150, z=30, speed=speed, wait=True)
 print('Position 1 reached')
-swift.set_position(x=200, y=-180, z=30, speed=speed, wait=True)
+swift.set_position(x=200, y=-150, z=30, speed=speed, wait=True)
 print('Position 2 reached')
 swift.set_position(x=250, y=0, z=150, speed=speed, wait=True)
 print('Position 3 reached')
@@ -69,7 +75,7 @@ swift.set_polar(stretch=150, rotation=0, height=150, speed=speed, wait=True)
 swift.set_polar(stretch=300, rotation=180, height=30, speed=speed, wait=True)
 '''
 
-swift.reset(wait=True, speed=50)
+swift.reset(wait=True, speed=5000)
 swift.flush_cmd()
 time.sleep(5)
 swift.disconnect()
