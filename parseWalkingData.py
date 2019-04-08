@@ -7,10 +7,16 @@ Version: 1.0
 '''
 
 '''
-stretch (mm)        : 150 -> 300
-rotation (degrees)  :   0 -> 180 
-height (mm)         :  30 -> 150 
-speed (mm/s?)       :   0 -> 250
++x is away from base
++y is towards power cable side of base
++z is upwards
+speed is [0, 100] if version is 4.0+
+speed is [0, 100000] if 3.0 < version < 4.0
+
+x (mm)          :  150 -> 300
+y (mm)          : -150 -> 150 
+z (mm)          :   30 -> 150 
+speed (mm/s?)   :    0 -> 100
 '''
 
 import csv
@@ -27,9 +33,9 @@ ySpeed = []
 zSpeed = []
 
 #robot constraint variables
-rotationX = 90
-heightY = 30
-stretchZ = 150
+absX = 200
+absY = 0
+absZ = 100
 speed = 100
 
 file = open('parseout.txt','w') 
@@ -49,26 +55,26 @@ for i in range(0, len(xPos)-1):
     yDist.append(yPos[i] - yPos[i+1])
     zDist.append(zPos[i] - zPos[i+1])
     
-    #rotation (degrees)  :   0 -> 180 
-    rotationX = rotationX + zDist[i] 
-    if rotationX > 180:
-        rotationX = 180
-    elif rotationX < 0:
-        rotationX = 0
+    #x (mm)          :  150 -> 300
+    absX = absX + zDist[i] 
+    if absX > 300:
+        absX = 300
+    elif absX < 150:
+        absX = 150
 
-    #height (mm)         :  30 -> 150 
-    heightY = heightY + yDist[i]
-    if heightY > 150:
-        heightY = 150
-    elif heightY < 30:
-        heightY = 30
+    #y (mm)          : -150 -> 150 
+    absY = absY + yDist[i]
+    if absY > 150:
+        absY = 150
+    elif absY < -150:
+        absY = -150
 
-    #stretch (mm)        : 150 -> 300
-    stretchZ = stretchZ + zDist[i]
-    if stretchZ > 300:
-        stretchZ = 300
-    elif stretchZ < 150:
-        stretchZ = 150
+    #z (mm)          :   30 -> 150 
+    absZ = absZ + zDist[i]
+    if absZ > 150:
+        absZ = 150
+    elif absZ < 30:
+        absZ = 30
 
     #speed (mm/s?)       :   0 -> 250
     if speed > 250:
@@ -76,9 +82,7 @@ for i in range(0, len(xPos)-1):
     elif speed < 0:
         speed = 0
 
-
-    
-    file.write('swift.set_position(x=' + str(stretchZ) + ', y=' + str(rotationX) + ', z=' + str(heightY) + ', speed=' + str(speed)+ ', wait=true)\n')
+    file.write('swift.set_position(x=' + str(absX) + ', y=' + str(absY) + ', z=' + str(absZ) + ', speed=' + str(speed)+ ', wait=true)\n')
 
 
 file.close()
