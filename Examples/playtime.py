@@ -57,9 +57,8 @@ print(swift.set_polar(stretch=150, rotation=90, height=150, wait=True))
 swift.set_polar(stretch=300, rotation=90, height=30, speed=100000, wait=True)
 print(swift.set_polar(stretch=300, rotation=90, height=30, wait=True))
 '''
-
-swift.reset(wait=True, speed=5000)
-speed = 5000
+speed = 100
+swift.reset(wait=True, speed=speed)
 
 swift.set_position(x=150, y=150, z=30, speed=speed, wait=True)
 print('Position 1 reached')
@@ -70,12 +69,35 @@ print('Position 3 reached')
 swift.set_position(x=150, y=100, z=30, speed=speed, wait=True)
 print('Position 4 reached')
 
+print('begin')
+swift.set_position(x=200, y=-21, z=100, speed=speed, wait=True)
+swift.set_position(x=200, y=-7, z=100, speed=speed, wait=True)
+swift.set_position(x=200, y=-54, z=100, speed=speed, wait=True)
+swift.set_position(x=200, y=-72, z=100, speed=speed, wait=True)
+swift.set_position(x=200, y=150, z=100, speed=speed, wait=True)
+swift.set_position(x=150, y=24, z=30, speed=speed, wait=True)
+swift.set_position(x=150, y=81, z=30, speed=speed, wait=True)
+swift.set_position(x=150, y=-75, z=30, speed=speed, wait=True)
+swift.set_position(x=150, y=-149, z=30, speed=speed, wait=True)
+swift.set_position(x=150, y=-122, z=30, speed=speed, wait=True)
+swift.set_position(x=150, y=-15, z=30, speed=speed, wait=True)
+swift.set_position(x=150, y=0, z=30, speed=speed, wait=True)
+swift.set_position(x=300, y=150, z=150, speed=speed, wait=True)
+swift.set_position(x=150, y=-150, z=30, speed=speed, wait=True)
+swift.set_position(x=300, y=77, z=150, speed=speed, wait=True)
+swift.set_position(x=300, y=-41, z=150, speed=speed, wait=True)
+swift.set_position(x=300, y=-150, z=150, speed=speed, wait=True)
+swift.set_position(x=300, y=-27, z=150, speed=speed, wait=True)
+swift.set_position(x=300, y=-17, z=150, speed=speed, wait=True)
+swift.set_position(x=300, y=1, z=150, speed=speed, wait=True)
+
 '''
 swift.set_polar(stretch=150, rotation=0, height=150, speed=speed, wait=True)
 swift.set_polar(stretch=300, rotation=180, height=30, speed=speed, wait=True)
 '''
 
-swift.reset(wait=True, speed=5000)
+swift.reset(wait=True, speed=speed)
 swift.flush_cmd()
 time.sleep(5)
 swift.disconnect()
+print('End')
