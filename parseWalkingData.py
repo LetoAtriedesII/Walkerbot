@@ -1,12 +1,26 @@
 '''
 Author: Adam Novak
-Description: this code is designed to parse data from a csv file and
+
+Description: This code is designed to parse data from a csv file and
 create motion commands for the robot
-Date modified: 03/25/19
+
+Instructions: Use this script in conjuction with the Workforce Motion Logger. Save the files
+from the program and convert the .wfd file to a .csv file by changing the extension. 
+Change inputFileName to be the name of the csv file you wish to read. Run the script.
+parseWalkingData.py will contain all of the motion commands for the robot. Place each of these
+in a file and run the code. 
+
+TODO: Note that the speed is currently not dependent on the PASS sensor's motion, but can easily
+be implemented once a scaling factor is determined. 
+
+Date modified: 04/15/19
 Version: 1.0
+Environment: Python 3.7
 '''
 
 '''
+Coordinates of the robot that are used in this program.
+(Note that this is not the maximum range of the robot.)
 +x is away from base
 +y is towards power cable side of base
 +z is upwards
@@ -37,10 +51,13 @@ absX = 200
 absY = 0
 absZ = 100
 speed = 100
+inputFileName = 'bnj_walk.csv'
+outputFileName = 'parseout.txt'
 
-file = open('parseout.txt','w') 
-
-with open('bnj_walk.csv') as csvDataFile:
+#open the output file
+file = open(outputFileName,'w') 
+#read the csv file
+with open(inputFileName) as csvDataFile:
     csvReader = csv.reader(csvDataFile)
     for row in csvReader:
         xPos.append(int(row[1]))
@@ -50,11 +67,21 @@ with open('bnj_walk.csv') as csvDataFile:
         ySpeed.append(int(row[5]))
         zSpeed.append(int(row[6]))
 
+#find the delta for each of the axes and output a line to the file
 for i in range(0, len(xPos)-1):
     xDist.append(xPos[i] - xPos[i+1])
     yDist.append(yPos[i] - yPos[i+1])
     zDist.append(zPos[i] - zPos[i+1])
     
+    '''
+    TODO: Set the scaling factor to properly reflect the sensor's speed
+    xSpeed.append(xPos[i] - xPos[i+1])
+    ySpeed.append(yPos[i] - yPos[i+1])
+    zSpeed.append(zPos[i] - zPos[i+1])
+    speed = scalingFactor * (xSpeed[i] + ySpeed[i] + zSpeed[i])/3
+    '''
+
+
     #x (mm)          :  150 -> 300
     absX = absX + zDist[i] 
     if absX > 300:
