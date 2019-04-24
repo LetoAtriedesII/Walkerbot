@@ -14,6 +14,11 @@ Making use of [uArm-Python-SDK](https://github.com/uArm-Developer/uArm-Python-SD
 
 The folder titled "Examples" has scripts that were used in our testing and experimentation. Some are copied directly from the uArm Python SDK, but others are tests that we created to test our understanding of the documentation.
 
+The folder labeled "CSV_Files_and_Parser" has some example data that we gathered as well as the parsing script. Note that the speed is currently not dependent on the PASS sensor's motion. Instead, the speed will be set to a constant value throughout the program.
+
+The folder titled "Finished_Gaits" has a list of gaits that can be run. 
+
+
 You can also use the [uArmStudio](https://www.ufactory.cc/#/en/support/download/pro) which is a program from uFactory that can be used to control the robot directly in a more user-friendly GUI version at the cost of some functionality.
 
 Important things that we discovered:
@@ -21,5 +26,5 @@ The set_polar() function seems to have issues when inputting more than two argum
 
 The speed of the robot changes based on the current firmware of the robot.
 Firmware 3.0 to up to (but not including) 4.0 appears to use speed between 0 and 100,000.
-Firmware 4.0 and up appeares to use speed between 0 and 100.
+Firmware 4.0 and up appears to use speed between 0 and 100.
 

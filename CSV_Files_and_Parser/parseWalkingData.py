@@ -11,7 +11,8 @@ parseWalkingData.py will contain all of the motion commands for the robot. Place
 in a file and run the code. 
 
 TODO: Note that the speed is currently not dependent on the PASS sensor's motion, but can easily
-be implemented once a scaling factor is determined. 
+be implemented once a scaling factor is determined. Instead, the speed will be set to a constant value
+throughout the path.
 
 Date modified: 04/15/19
 Version: 1.0
