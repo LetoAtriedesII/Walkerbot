@@ -46,17 +46,37 @@ green = 49
 
 speed = 100
 swift.reset(wait=True, speed=speed)
-swift.set_digital_output(pin=TODO, value=1) # set led based on program type
+
 
 swift.flush_cmd()
 print('Begin')
 
+#all leds on
+swift.set_digital_output(pin=50, value=1)
+swift.flush_cmd() 
+time.sleep(0.5)
+swift.set_digital_output(pin=45, value=1)
+swift.flush_cmd()
+time.sleep(0.5)
+swift.set_digital_output(pin=49, value=1) 
+swift.flush_cmd()
+time.sleep(0.5)
+
+#all leds off
+time.sleep(10)
+swift.set_digital_output(pin=50, value=0) 
+swift.flush_cmd()
+time.sleep(0.5)
+swift.set_digital_output(pin=45, value=0)
+swift.flush_cmd()
+time.sleep(0.5)
+swift.set_digital_output(pin=49, value=0) 
+swift.flush_cmd()
+time.sleep(0.5)
 
 
 print('Ending')
 swift.reset(wait=True, speed=speed)
-swift.set_digital_output(pin=TODO, value=0) # set led based on program type
-swift.flush_cmd()
 time.sleep(5)
 swift.disconnect()
 print('Finished')

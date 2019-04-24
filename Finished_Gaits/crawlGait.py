@@ -39,11 +39,11 @@ firmware_version = device_info['firmware_version']
 #set for general mode
 swift.set_mode(0)
 
-speed = 100
+speed = 10
 swift.reset(wait=True, speed=speed)
-swift.set_digital_output(pin=49, value=1) # green led
+swift.set_digital_output(pin=45, value=1) # yellow led
 swift.flush_cmd()
-print('begin')
+print('Begin')
 
 
 swift.set_position(x=200, y=-82, z=100, speed=speed, wait=True)
@@ -451,7 +451,7 @@ swift.set_position(x=150, y=-27, z=30, speed=speed, wait=True)
 
 print('Ending')
 swift.reset(wait=True, speed=speed)
-swift.set_digital_output(pin=49, value=0) # green led
+swift.set_digital_output(pin=45, value=0) # yellow led
 swift.flush_cmd()
 time.sleep(5)
 swift.disconnect()

@@ -39,11 +39,11 @@ firmware_version = device_info['firmware_version']
 #set for general mode
 swift.set_mode(0)
 
-speed = 100
+speed = 2
 swift.reset(wait=True, speed=speed)
 swift.set_digital_output(pin=50, value=1) # set led to red
 swift.flush_cmd()
-print('begin')
+print('Begin')
 
 swift.set_position(x=200, y=-1, z=100, speed=speed, wait=True)
 swift.set_position(x=200, y=0, z=100, speed=speed, wait=True)
