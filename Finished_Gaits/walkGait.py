@@ -45,7 +45,6 @@ swift.set_digital_output(pin=49, value=1) # green led
 swift.flush_cmd()
 print('Begin')
 
-
 swift.set_position(x=200, y=49, z=100, speed=speed, wait=True)
 swift.set_position(x=200, y=-109, z=100, speed=speed, wait=True)
 swift.set_position(x=300, y=-132, z=150, speed=speed, wait=True)
