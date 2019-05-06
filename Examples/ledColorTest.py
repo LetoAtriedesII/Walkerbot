@@ -63,7 +63,7 @@ swift.flush_cmd()
 time.sleep(0.5)
 
 #all leds off
-time.sleep(10)
+time.sleep(1)
 swift.set_digital_output(pin=50, value=0) 
 swift.flush_cmd()
 time.sleep(0.5)

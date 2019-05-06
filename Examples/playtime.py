@@ -57,7 +57,7 @@ print(swift.set_polar(stretch=150, rotation=90, height=150, wait=True))
 swift.set_polar(stretch=300, rotation=90, height=30, speed=100000, wait=True)
 print(swift.set_polar(stretch=300, rotation=90, height=30, wait=True))
 '''
-speed = 100
+speed = 30
 swift.reset(wait=True, speed=speed)
 
 swift.set_position(x=150, y=150, z=30, speed=speed, wait=True)
